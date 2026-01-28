@@ -146,6 +146,7 @@
             margin: 0 auto;
         }
         
+        /* 更新后的hero样式 */
         .hero {
             background: url('images/ISIT.png');
             background-size: cover;
@@ -155,15 +156,23 @@
             text-align: center;
             padding: 150px 20px 120px;
             margin-top: 70px;
-            border-radius: 0 0 20px 20px;
+            border-radius: 0 20px 20px 0;
             position: relative;
             overflow: hidden;
+            /* 添加轻微阴影使文字更清晰 */
+            box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
         }
         
+        /* 为文字区域添加半透明背景以提高可读性 */
         .hero-content {
             position: relative;
             z-index: 2;
             animation: fadeInUp 1s ease-out;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 1100px;
+            margin: 0 auto;
         }
         
         @keyframes fadeInUp {
@@ -182,7 +191,7 @@
             font-size: 2.8rem;
             margin-bottom: 20px;
             line-height: 1.2;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
             font-weight: 700;
             max-width: 1000px;
             margin-left: auto;
@@ -229,7 +238,6 @@
             font-size: 1.3rem;
             max-width: 800px;
             margin: 0 auto 30px;
-            opacity: 0.9;
             color: #e9ecef;
         }
         
@@ -314,56 +322,49 @@
             transform: scale(1.05);
         }
         
-        /* 主题领域 - 列表式 */
+        /* 主题领域 - 更新为简单蓝色背景列表 */
+        .topics-section {
+            background-color: #3498db; /* 蓝色背景 */
+            padding: 80px 20px;
+        }
+        
+        .topics-section .section-title h2 {
+            color: white;
+        }
+        
+        .topics-section .section-title h2::after {
+            background-color: white;
+        }
+        
         .topics-container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 40px;
         }
         
         .topics-list {
-            background-color: white;
-            border-radius: 15px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        }
-        
-        .topics-list ul {
             list-style-type: none;
+            padding: 0;
         }
         
         .topics-list li {
-            padding: 15px 0;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            align-items: flex-start;
-        }
-        
-        .topics-list li:last-child {
-            border-bottom: none;
-        }
-        
-        .topic-icon {
-            color: var(--secondary);
+            color: white;
             font-size: 1.2rem;
-            margin-right: 15px;
-            margin-top: 3px;
-            min-width: 24px;
+            line-height: 1.8;
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
         }
         
-        .topic-content {
-            flex: 1;
-        }
-        
-        .topic-title {
-            font-size: 1.3rem;
-            color: var(--primary);
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-        
-        .topic-description {
-            color: var(--gray);
-            line-height: 1.5;
+        .topics-list li:before {
+            content: "•";
+            color: white;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -2px;
         }
         
         /* 演讲者 */
@@ -595,6 +596,10 @@
             .about-content {
                 flex-direction: column;
             }
+            
+            .topics-list li {
+                font-size: 1.1rem;
+            }
         }
         
         @media (max-width: 768px) {
@@ -632,6 +637,10 @@
                 background-attachment: scroll;
             }
             
+            .hero-content {
+                padding: 30px 20px;
+            }
+            
             .hero-title {
                 font-size: 1.9rem;
             }
@@ -666,8 +675,12 @@
                 margin-bottom: 15px;
             }
             
-            .topics-list {
-                padding: 25px;
+            .topics-container {
+                padding: 30px 20px;
+            }
+            
+            .topics-list li {
+                font-size: 1rem;
             }
         }
         
@@ -693,12 +706,17 @@
                 font-size: 1.7rem;
             }
             
-            .topic-card, .speaker-card {
+            .speaker-card {
                 padding: 20px;
             }
             
-            .topics-list {
-                padding: 20px;
+            .topics-container {
+                padding: 20px 15px;
+            }
+            
+            .topics-list li {
+                font-size: 0.95rem;
+                line-height: 1.6;
             }
         }
     </style>
@@ -735,7 +753,7 @@
 
     <!-- 主要内容 -->
     <main>
-        <!-- 首页/横幅 - 按照图片格式更新 -->
+        <!-- 首页/横幅 - 更新背景图片 -->
         <section id="home" class="hero">
             <div class="hero-content">
                 <h1 class="hero-title">
@@ -774,76 +792,27 @@
             </div>
         </section>
 
-        <!-- 主题领域 - 列表式 -->
-        <section id="topics">
+        <!-- 主题领域 - 更新为简单蓝色背景列表 -->
+        <section id="topics" class="topics-section">
             <div class="section-title">
                 <h2>主题领域</h2>
             </div>
             
             <div class="topics-container">
-                <div class="topics-list">
-                    <ul>
-                        <li>
-                            <div class="topic-icon">
-                                <i class="fas fa-satellite"></i>
-                            </div>
-                            <div class="topic-content">
-                                <div class="topic-title">通信系统中的波形设计</div>
-                                <div class="topic-description">探索高效频谱利用、低功耗通信和高速数据传输的新型波形设计方法，包括OFDM、FBMC、GFDM等技术的演进与创新。</div>
-                            </div>
-                        </li>
-                        
-                        <li>
-                            <div class="topic-icon">
-                                <i class="fas fa-radar"></i>
-                            </div>
-                            <div class="topic-content">
-                                <div class="topic-title">感知与雷达波形设计</div>
-                                <div class="topic-description">研究高分辨率感知、目标识别和环境监测中的波形优化，包括MIMO雷达、认知雷达和联合通信感知系统的波形设计。</div>
-                            </div>
-                        </li>
-                        
-                        <li>
-                            <div class="topic-icon">
-                                <i class="fas fa-network-wired"></i>
-                            </div>
-                            <div class="topic-content">
-                                <div class="topic-title">集成通信与感知系统</div>
-                                <div class="topic-description">探讨通信与感知功能集成的系统架构和波形设计，实现频谱资源共享和硬件复用，提升系统整体效率。</div>
-                            </div>
-                        </li>
-                        
-                        <li>
-                            <div class="topic-icon">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                            <div class="topic-content">
-                                <div class="topic-title">信息论基础</div>
-                                <div class="topic-description">分析波形设计的理论极限和性能边界，研究容量、可靠性和延迟等关键性能指标的信息论基础。</div>
-                            </div>
-                        </li>
-                        
-                        <li>
-                            <div class="topic-icon">
-                                <i class="fas fa-microchip"></i>
-                            </div>
-                            <div class="topic-content">
-                                <div class="topic-title">硬件实现与优化</div>
-                                <div class="topic-description">探讨波形设计在实际硬件平台上的实现挑战，包括功率放大器非线性、相位噪声补偿和数字预失真等技术。</div>
-                            </div>
-                        </li>
-                        
-                        <li>
-                            <div class="topic-icon">
-                                <i class="fas fa-mobile-alt"></i>
-                            </div>
-                            <div class="topic-content">
-                                <div class="topic-title">6G及未来无线系统</div>
-                                <div class="topic-description">面向6G及未来无线通信系统的波形设计需求，研究太赫兹通信、智能反射表面和全息无线电等新兴技术中的波形创新。</div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                <ul class="topics-list">
+                    <li>Novel Waveform Design for Communications and Sensing;</li>
+                    <li>Information-Theoretic Foundations of Novel Waveform Design;</li>
+                    <li>Channel Coding and Decoding Design;</li>
+                    <li>Channel Estimation and Equalization;</li>
+                    <li>Signal Detection and Receiver Design for Novel Modulation Schemes;</li>
+                    <li>Integrated Sensing and Communications with Advanced Waveforms;</li>
+                    <li>Multiple Access and Resource Allocation Mechanisms for 6G Waveforms;</li>
+                    <li>Low-Latency and Ultra-Reliable Transmission under High Mobility;</li>
+                    <li>Joint Waveform and Coding Co-Design;</li>
+                    <li>Signal Processing for Waveform-Based Transceiver Designs;</li>
+                    <li>MIMO and Massive MIMO-Aided Systems;</li>
+                    <li>Hardware Implementation and Prototype Validation of Novel Waveforms.</li>
+                </ul>
             </div>
         </section>
 
