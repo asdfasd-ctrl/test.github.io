@@ -61,9 +61,28 @@
             align-items: center;
         }
         
-        .logo i {
-            color: var(--secondary);
-            margin-right: 10px;
+        .logo-img {
+            width: 45px;
+            height: 45px;
+            margin-right: 12px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+        
+        .logo-text .main {
+            font-size: 1.6rem;
+        }
+        
+        .logo-text .sub {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--gray);
         }
         
         .logo span {
@@ -128,18 +147,41 @@
         }
         
         .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, #1a2530 100%);
+            background: linear-gradient(rgba(44, 62, 80, 0.85), rgba(26, 37, 48, 0.9)), url('https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: white;
             text-align: center;
             padding: 150px 20px 120px;
             margin-top: 70px;
             border-radius: 0 0 20px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 20px;
             line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
         
         .hero p {
@@ -154,6 +196,16 @@
             font-weight: 600;
             margin-bottom: 40px;
             color: var(--light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .date-location i {
+            color: var(--accent);
+            margin-right: 8px;
         }
         
         .cta-button {
@@ -167,13 +219,14 @@
             text-decoration: none;
             transition: var(--transition);
             border: 2px solid var(--accent);
+            margin-top: 20px;
         }
         
         .cta-button:hover {
             background-color: transparent;
             color: var(--accent);
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
         
         .section-title {
@@ -214,9 +267,10 @@
         
         .about-image {
             flex: 1;
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            transition: var(--transition);
         }
         
         .about-image img {
@@ -226,44 +280,68 @@
             transition: var(--transition);
         }
         
+        .about-image:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
         .about-image:hover img {
             transform: scale(1.05);
         }
         
-        /* 主题与演讲者 */
-        .topics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+        /* 主题领域 - 列表式 */
+        .topics-container {
+            max-width: 800px;
+            margin: 0 auto;
         }
         
-        .topic-card {
+        .topics-list {
             background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-            padding: 30px;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
         }
         
-        .topic-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        .topics-list ul {
+            list-style-type: none;
+        }
+        
+        .topics-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .topics-list li:last-child {
+            border-bottom: none;
         }
         
         .topic-icon {
-            font-size: 2.5rem;
             color: var(--secondary);
-            margin-bottom: 20px;
+            font-size: 1.2rem;
+            margin-right: 15px;
+            margin-top: 3px;
+            min-width: 24px;
         }
         
-        .topic-card h3 {
+        .topic-content {
+            flex: 1;
+        }
+        
+        .topic-title {
+            font-size: 1.3rem;
             color: var(--primary);
-            margin-bottom: 15px;
-            font-size: 1.5rem;
+            margin-bottom: 8px;
+            font-weight: 600;
         }
         
+        .topic-description {
+            color: var(--gray);
+            line-height: 1.5;
+        }
+        
+        /* 演讲者 */
         .speakers-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -288,20 +366,31 @@
         
         .speaker-img {
             width: 100%;
-            height: 200px;
+            height: 250px;
             object-fit: cover;
             margin-bottom: 20px;
+            transition: var(--transition);
+        }
+        
+        .speaker-card:hover .speaker-img {
+            transform: scale(1.05);
         }
         
         .speaker-card h3 {
             color: var(--primary);
             margin-bottom: 5px;
+            padding: 0 15px;
         }
         
         .speaker-title {
             color: var(--gray);
             font-size: 0.9rem;
             margin-bottom: 15px;
+            padding: 0 15px;
+        }
+        
+        .speaker-card p {
+            padding: 0 15px;
         }
         
         /* 日程安排 */
@@ -319,10 +408,12 @@
             display: flex;
             align-items: center;
             transition: var(--transition);
+            border-left: 4px solid var(--secondary);
         }
         
         .schedule-item:hover {
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transform: translateX(5px);
         }
         
         .schedule-time {
@@ -341,15 +432,55 @@
             margin-bottom: 10px;
         }
         
-        
-        
-        /* 页脚 */
-        footer {
-            background-color: var(--primary);
-            color: white;
-            padding: 60px 20px 30px;
+        /* 重要日期 */
+        .dates-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
         }
         
+        .date-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            padding: 30px;
+            text-align: center;
+            border-top: 4px solid var(--accent);
+        }
+        
+        .date-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .date-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        
+        .date-title {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .date {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .date-description {
+            color: var(--gray);
+        }
+        
+        /* 联系信息 */
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -361,7 +492,7 @@
         .footer-section h3 {
             font-size: 1.3rem;
             margin-bottom: 20px;
-            color: var(--light);
+            color: var(--primary);
         }
         
         .footer-section p {
@@ -396,15 +527,16 @@
             justify-content: center;
             width: 40px;
             height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(52, 152, 219, 0.1);
             border-radius: 50%;
-            color: white;
+            color: var(--secondary);
             text-decoration: none;
             transition: var(--transition);
         }
         
         .social-links a:hover {
             background-color: var(--secondary);
+            color: white;
             transform: translateY(-3px);
         }
         
@@ -412,7 +544,7 @@
             text-align: center;
             margin-top: 50px;
             padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
             opacity: 0.7;
             font-size: 0.9rem;
         }
@@ -425,18 +557,6 @@
             
             .about-content {
                 flex-direction: column;
-            }
-            
-            .register-form {
-                grid-template-columns: 1fr;
-            }
-            
-            .form-group.full-width {
-                grid-column: 1;
-            }
-            
-            .submit-btn {
-                grid-column: 1;
             }
         }
         
@@ -472,6 +592,7 @@
             
             .hero {
                 padding: 120px 20px 80px;
+                background-attachment: scroll;
             }
             
             .hero h1 {
@@ -495,6 +616,10 @@
                 margin-right: 0;
                 margin-bottom: 15px;
             }
+            
+            .topics-list {
+                padding: 25px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -506,11 +631,15 @@
                 font-size: 1.7rem;
             }
             
-            .register-container {
-                padding: 30px 20px;
+            .topic-card, .speaker-card {
+                padding: 20px;
             }
             
-            .topic-card, .speaker-card {
+            .date-location {
+                flex-direction: column;
+            }
+            
+            .topics-list {
                 padding: 20px;
             }
         }
@@ -521,8 +650,11 @@
     <header>
         <div class="nav-container">
             <div class="logo">
-                <i class="fas fa-microchip"></i>
-                ISIT<span>Workshop</span>
+                <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80" alt="ISIT Workshop Logo" class="logo-img">
+                <div class="logo-text">
+                    <span class="main">ISIT<span>Workshop</span></span>
+                    <span class="sub">信息科学与技术研讨会</span>
+                </div>
             </div>
             
             <div class="mobile-toggle" id="mobileToggle">
@@ -533,9 +665,10 @@
                 <ul id="navMenu">
                     <li><a href="#home" class="active">首页</a></li>
                     <li><a href="#about">关于</a></li>
-                    <li><a href="#topics">主题</a></li>
+                    <li><a href="#topics">主题领域</a></li>
                     <li><a href="#speakers">演讲者</a></li>
                     <li><a href="#schedule">日程</a></li>
+                    <li><a href="#dates">重要日期</a></li>
                     <li><a href="#contact">联系</a></li>
                 </ul>
             </nav>
@@ -544,9 +677,6 @@
 
     <!-- 主要内容 -->
     <main>
-        <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="ISIT Workshop会议场景">
-        </div>
         <!-- 首页/横幅 -->
         <section id="home" class="hero">
             <div class="hero-content">
@@ -556,7 +686,7 @@
                     <i class="fas fa-map-marker-alt"></i> 上海国际会议中心
                 </p>
                 <p>加入全球信息科学与技术领域的领先专家，共同探讨人工智能、大数据、网络安全和量子计算等前沿技术的最新进展与应用。</p>
-                <a href="#register" class="cta-button">立即注册 <i class="fas fa-arrow-right"></i></a>
+                <a href="#dates" class="cta-button">查看重要日期 <i class="fas fa-arrow-right"></i></a>
             </div>
         </section>
 
@@ -579,59 +709,75 @@
             </div>
         </section>
 
-        <!-- topic -->
+        <!-- 主题领域 - 列表式 -->
         <section id="topics">
             <div class="section-title">
-                <h2>topic</h2>
+                <h2>主题领域</h2>
             </div>
             
-            <div class="topics-grid">
-                <div class="topic-card">
-                    <div class="topic-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>人工智能与机器学习</h3>
-                    <p>探索深度学习、自然语言处理、计算机视觉和强化学习等领域的最新进展，以及AI在各行业的创新应用。</p>
-                </div>
-                
-                <div class="topic-card">
-                    <div class="topic-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3>大数据与分析</h3>
-                    <p>讨论大数据管理、数据挖掘、实时分析和可视化技术，以及数据驱动决策的最佳实践。</p>
-                </div>
-                
-                <div class="topic-card">
-                    <div class="topic-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>网络安全</h3>
-                    <p>关注网络安全威胁、隐私保护、区块链技术和加密算法的前沿发展，构建更安全的数字世界。</p>
-                </div>
-                
-                <div class="topic-card">
-                    <div class="topic-icon">
-                        <i class="fas fa-satellite"></i>
-                    </div>
-                    <h3>物联网与5G</h3>
-                    <p>研究物联网设备、5G通信、边缘计算和智能城市解决方案，实现万物互联的未来。</p>
-                </div>
-                
-                <div class="topic-card">
-                    <div class="topic-icon">
-                        <i class="fas fa-atom"></i>
-                    </div>
-                    <h3>量子计算</h3>
-                    <p>探索量子计算的基本原理、量子算法和量子硬件，了解这一颠覆性技术的潜力和挑战。</p>
-                </div>
-                
-                <div class="topic-card">
-                    <div class="topic-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>数字化转型</h3>
-                    <p>分享企业数字化转型的成功案例，探讨如何利用信息技术优化业务流程和创造新的商业模式。</p>
+            <div class="topics-container">
+                <div class="topics-list">
+                    <ul>
+                        <li>
+                            <div class="topic-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div class="topic-content">
+                                <div class="topic-title">人工智能与机器学习</div>
+                                <div class="topic-description">探索深度学习、自然语言处理、计算机视觉和强化学习等领域的最新进展，以及AI在各行业的创新应用。</div>
+                            </div>
+                        </li>
+                        
+                        <li>
+                            <div class="topic-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div class="topic-content">
+                                <div class="topic-title">大数据与分析</div>
+                                <div class="topic-description">讨论大数据管理、数据挖掘、实时分析和可视化技术，以及数据驱动决策的最佳实践。</div>
+                            </div>
+                        </li>
+                        
+                        <li>
+                            <div class="topic-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="topic-content">
+                                <div class="topic-title">网络安全</div>
+                                <div class="topic-description">关注网络安全威胁、隐私保护、区块链技术和加密算法的前沿发展，构建更安全的数字世界。</div>
+                            </div>
+                        </li>
+                        
+                        <li>
+                            <div class="topic-icon">
+                                <i class="fas fa-satellite"></i>
+                            </div>
+                            <div class="topic-content">
+                                <div class="topic-title">物联网与5G</div>
+                                <div class="topic-description">研究物联网设备、5G通信、边缘计算和智能城市解决方案，实现万物互联的未来。</div>
+                            </div>
+                        </li>
+                        
+                        <li>
+                            <div class="topic-icon">
+                                <i class="fas fa-atom"></i>
+                            </div>
+                            <div class="topic-content">
+                                <div class="topic-title">量子计算</div>
+                                <div class="topic-description">探索量子计算的基本原理、量子算法和量子硬件，了解这一颠覆性技术的潜力和挑战。</div>
+                            </div>
+                        </li>
+                        
+                        <li>
+                            <div class="topic-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="topic-content">
+                                <div class="topic-title">数字化转型</div>
+                                <div class="topic-description">分享企业数字化转型的成功案例，探讨如何利用信息技术优化业务流程和创造新的商业模式。</div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -639,7 +785,7 @@
         <!-- 演讲者 -->
         <section id="speakers">
             <div class="section-title">
-                <h2>organizer</h2>
+                <h2>特邀演讲者</h2>
             </div>
             
             <div class="speakers-container">
@@ -745,6 +891,50 @@
             </div>
         </section>
 
+        <!-- 重要日期 -->
+        <section id="dates">
+            <div class="section-title">
+                <h2>重要日期</h2>
+            </div>
+            
+            <div class="dates-container">
+                <div class="date-card">
+                    <div class="date-icon">
+                        <i class="fas fa-paper-plane"></i>
+                    </div>
+                    <div class="date-title">论文提交截止</div>
+                    <div class="date">2024年9月30日</div>
+                    <div class="date-description">提交您的研究论文或技术报告，展示您在信息科学与技术领域的最新成果。</div>
+                </div>
+                
+                <div class="date-card">
+                    <div class="date-icon">
+                        <i class="fas fa-ticket-alt"></i>
+                    </div>
+                    <div class="date-title">早鸟注册截止</div>
+                    <div class="date">2024年10月15日</div>
+                    <div class="date-description">提前注册可享受早鸟优惠价格，节省参会费用并确保席位。</div>
+                </div>
+                
+                <div class="date-card">
+                    <div class="date-icon">
+                        <i class="fas fa-hotel"></i>
+                    </div>
+                    <div class="date-title">酒店预订截止</div>
+                    <div class="date">2024年10月31日</div>
+                    <div class="date-description">通过官方渠道预订会议酒店可享受特别优惠价格。</div>
+                </div>
+                
+                <div class="date-card">
+                    <div class="date-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="date-title">研讨会日期</div>
+                    <div class="date">2024年11月15-17日</div>
+                    <div class="date-description">为期三天的技术交流、主题演讲和实践工作坊，不容错过。</div>
+                </div>
+            </div>
+        </section>
 
         <!-- 联系信息 -->
         <section id="contact">
@@ -777,23 +967,20 @@
                 </div>
                 
                 <div class="footer-section">
-                    <h3>重要日期</h3>
-                    <p><strong>早鸟注册截止：</strong>2024年10月15日</p>
-                    <p><strong>论文提交截止：</strong>2024年9月30日</p>
-                    <p><strong>研讨会日期：</strong>2024年11月15-17日</p>
-                    <p><strong>酒店预订截止：</strong>2024年10月31日</p>
+                    <h3>组织委员会</h3>
+                    <p>主席：张明 教授</p>
+                    <p>副主席：李娜 博士</p>
+                    <p>秘书长：王芳 教授</p>
+                    <p>程序委员会主席：Dr. John Smith</p>
                 </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2024 ISIT Workshop. 保留所有权利。</p>
+                <p>本网站内容仅供参考，最终安排以研讨会现场公告为准。</p>
             </div>
         </section>
     </main>
-
-    <!-- 页脚 -->
-    <footer>
-        <div class="copyright">
-            <p>&copy; 2024 ISIT Workshop. 保留所有权利。</p>
-            <p>本网站内容仅供参考，最终安排以研讨会现场公告为准。</p>
-        </div>
-    </footer>
 
     <script>
         // 移动端导航菜单切换
@@ -824,9 +1011,6 @@
                     mobileToggle.querySelector('i').classList.add('fa-bars');
                 }
             });
-        });
-        
-        
         });
         
         // 滚动时更新导航栏活动状态
