@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ISIT Workshop 2024 | 信息科学与技术研讨会</title>
+    <title>ISIT Workshop 2026 | 下一代波形设计</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -147,7 +147,7 @@
         }
         
         .hero {
-            background:  url('/images/ISIT.png');
+            background: linear-gradient(rgba(44, 62, 80, 0.85), rgba(26, 37, 48, 0.9)), url('https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -177,35 +177,60 @@
             }
         }
         
-        .hero h1 {
-            font-size: 3.5rem;
+        /* 更新首页标题样式 */
+        .hero-title {
+            font-size: 2.8rem;
             margin-bottom: 20px;
             line-height: 1.2;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            font-weight: 700;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
-        .hero p {
-            font-size: 1.3rem;
-            max-width: 800px;
-            margin: 0 auto 30px;
-            opacity: 0.9;
+        .hero-title-line1 {
+            display: block;
+            margin-bottom: 0.2em;
         }
         
-        .hero .date-location {
-            font-size: 1.5rem;
+        .hero-title-line2 {
+            display: block;
+            font-size: 2.5rem;
+            color: #f8f9fa;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
             font-weight: 600;
+            color: #f8f9fa;
+            letter-spacing: 0.5px;
+        }
+        
+        .hero-date-location {
+            font-size: 1.6rem;
+            font-weight: 500;
             margin-bottom: 40px;
-            color: var(--light);
+            color: #f8f9fa;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 10px;
         }
         
-        .date-location i {
+        .hero-date-location i {
             color: var(--accent);
             margin-right: 8px;
+        }
+        
+        .hero-description {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+            color: #e9ecef;
         }
         
         .cta-button {
@@ -551,8 +576,20 @@
         
         /* 响应式设计 */
         @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 2.8rem;
+            .hero-title {
+                font-size: 2.3rem;
+            }
+            
+            .hero-title-line2 {
+                font-size: 2.1rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.6rem;
+            }
+            
+            .hero-date-location {
+                font-size: 1.4rem;
             }
             
             .about-content {
@@ -595,11 +632,23 @@
                 background-attachment: scroll;
             }
             
-            .hero h1 {
-                font-size: 2.2rem;
+            .hero-title {
+                font-size: 1.9rem;
             }
             
-            .hero p {
+            .hero-title-line2 {
+                font-size: 1.7rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .hero-date-location {
+                font-size: 1.2rem;
+            }
+            
+            .hero-description {
                 font-size: 1.1rem;
             }
             
@@ -623,8 +672,21 @@
         }
         
         @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 1.8rem;
+            .hero-title {
+                font-size: 1.6rem;
+            }
+            
+            .hero-title-line2 {
+                font-size: 1.4rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .hero-date-location {
+                font-size: 1.1rem;
+                flex-direction: column;
             }
             
             .section-title h2 {
@@ -633,10 +695,6 @@
             
             .topic-card, .speaker-card {
                 padding: 20px;
-            }
-            
-            .date-location {
-                flex-direction: column;
             }
             
             .topics-list {
@@ -653,7 +711,7 @@
                 <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80" alt="ISIT Workshop Logo" class="logo-img">
                 <div class="logo-text">
                     <span class="main">ISIT<span>Workshop</span></span>
-                    <span class="sub">信息科学与技术研讨会</span>
+                    <span class="sub">下一代波形设计研讨会</span>
                 </div>
             </div>
             
@@ -677,15 +735,22 @@
 
     <!-- 主要内容 -->
     <main>
-        <!-- 首页/横幅 -->
+        <!-- 首页/横幅 - 按照图片格式更新 -->
         <section id="home" class="hero">
             <div class="hero-content">
-                <h1>ISIT Workshop 2024</h1>
-                <p class="date-location">
-                    <i class="fas fa-calendar-alt"></i> 2024年11月15-17日
-                    <i class="fas fa-map-marker-alt"></i> 上海国际会议中心
+                <h1 class="hero-title">
+                    <span class="hero-title-line1">Next-Generation Waveforms Design for Communications, Sensing, and Integrated Systems:</span>
+                    <span class="hero-title-line2">Information-Theoretic & Application Perspectives</span>
+                </h1>
+                
+                <p class="hero-subtitle">Workshop at IEEE ISIT 2026</p>
+                
+                <p class="hero-date-location">
+                    <i class="fas fa-calendar-alt"></i> July 03, 2026, Guangzhou, China
                 </p>
-                <p>加入全球信息科学与技术领域的领先专家，共同探讨人工智能、大数据、网络安全和量子计算等前沿技术的最新进展与应用。</p>
+                
+                <p class="hero-description">探索通信、感知与集成系统中下一代波形设计的前沿研究，涵盖信息论基础与实际应用视角。本次研讨会将汇聚全球顶尖专家，共同探讨波形设计的最新进展与未来方向。</p>
+                
                 <a href="#dates" class="cta-button">查看重要日期 <i class="fas fa-arrow-right"></i></a>
             </div>
         </section>
@@ -693,18 +758,18 @@
         <!-- 关于研讨会 -->
         <section id="about">
             <div class="section-title">
-                <h2>关于ISIT Workshop</h2>
+                <h2>关于研讨会</h2>
             </div>
             
             <div class="about-content">
                 <div class="about-text">
-                    <p>ISIT Workshop 2024是信息科学与技术领域一年一度的国际盛会，汇集了来自学术界和工业界的顶尖专家、研究人员和从业人员。</p>
-                    <p>本次研讨会旨在为参与者提供一个交流最新研究成果、分享实践经验、探讨未来趋势的平台。我们专注于前沿技术领域，包括人工智能、机器学习、大数据分析、网络安全、物联网和量子计算等。</p>
-                    <p>通过主题演讲、技术分会、实践工作坊和社交活动，与会者将有机会建立有价值的专业联系，获得灵感，并将新知识应用于自己的研究和项目中。</p>
-                    <p>我们期待与您在上海相见，共同塑造信息技术的未来！</p>
+                    <p>本次ISIT Workshop 2026专注于下一代波形设计在通信、感知与集成系统中的前沿研究。随着无线技术的发展，波形设计已成为提升系统性能、支持多样化应用的关键技术。</p>
+                    <p>本次研讨会旨在为研究人员、工程师和从业人员提供一个交流平台，分享在波形设计方面的最新研究成果、理论进展和应用经验。我们将探讨从基础信息论到实际系统实现的完整技术链条。</p>
+                    <p>通过主题演讲、技术讨论和互动环节，与会者将有机会深入了解波形设计的最新趋势，建立有价值的专业联系，并探索未来的研究方向。</p>
+                    <p>我们期待与您在中国广州相见，共同推动波形设计技术的发展！</p>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="ISIT Workshop会议场景">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="波形设计技术">
                 </div>
             </div>
         </section>
@@ -720,51 +785,31 @@
                     <ul>
                         <li>
                             <div class="topic-icon">
-                                <i class="fas fa-brain"></i>
-                            </div>
-                            <div class="topic-content">
-                                <div class="topic-title">人工智能与机器学习</div>
-                                <div class="topic-description">探索深度学习、自然语言处理、计算机视觉和强化学习等领域的最新进展，以及AI在各行业的创新应用。</div>
-                            </div>
-                        </li>
-                        
-                        <li>
-                            <div class="topic-icon">
-                                <i class="fas fa-database"></i>
-                            </div>
-                            <div class="topic-content">
-                                <div class="topic-title">大数据与分析</div>
-                                <div class="topic-description">讨论大数据管理、数据挖掘、实时分析和可视化技术，以及数据驱动决策的最佳实践。</div>
-                            </div>
-                        </li>
-                        
-                        <li>
-                            <div class="topic-icon">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <div class="topic-content">
-                                <div class="topic-title">网络安全</div>
-                                <div class="topic-description">关注网络安全威胁、隐私保护、区块链技术和加密算法的前沿发展，构建更安全的数字世界。</div>
-                            </div>
-                        </li>
-                        
-                        <li>
-                            <div class="topic-icon">
                                 <i class="fas fa-satellite"></i>
                             </div>
                             <div class="topic-content">
-                                <div class="topic-title">物联网与5G</div>
-                                <div class="topic-description">研究物联网设备、5G通信、边缘计算和智能城市解决方案，实现万物互联的未来。</div>
+                                <div class="topic-title">通信系统中的波形设计</div>
+                                <div class="topic-description">探索高效频谱利用、低功耗通信和高速数据传输的新型波形设计方法，包括OFDM、FBMC、GFDM等技术的演进与创新。</div>
                             </div>
                         </li>
                         
                         <li>
                             <div class="topic-icon">
-                                <i class="fas fa-atom"></i>
+                                <i class="fas fa-radar"></i>
                             </div>
                             <div class="topic-content">
-                                <div class="topic-title">量子计算</div>
-                                <div class="topic-description">探索量子计算的基本原理、量子算法和量子硬件，了解这一颠覆性技术的潜力和挑战。</div>
+                                <div class="topic-title">感知与雷达波形设计</div>
+                                <div class="topic-description">研究高分辨率感知、目标识别和环境监测中的波形优化，包括MIMO雷达、认知雷达和联合通信感知系统的波形设计。</div>
+                            </div>
+                        </li>
+                        
+                        <li>
+                            <div class="topic-icon">
+                                <i class="fas fa-network-wired"></i>
+                            </div>
+                            <div class="topic-content">
+                                <div class="topic-title">集成通信与感知系统</div>
+                                <div class="topic-description">探讨通信与感知功能集成的系统架构和波形设计，实现频谱资源共享和硬件复用，提升系统整体效率。</div>
                             </div>
                         </li>
                         
@@ -773,8 +818,28 @@
                                 <i class="fas fa-chart-line"></i>
                             </div>
                             <div class="topic-content">
-                                <div class="topic-title">数字化转型</div>
-                                <div class="topic-description">分享企业数字化转型的成功案例，探讨如何利用信息技术优化业务流程和创造新的商业模式。</div>
+                                <div class="topic-title">信息论基础</div>
+                                <div class="topic-description">分析波形设计的理论极限和性能边界，研究容量、可靠性和延迟等关键性能指标的信息论基础。</div>
+                            </div>
+                        </li>
+                        
+                        <li>
+                            <div class="topic-icon">
+                                <i class="fas fa-microchip"></i>
+                            </div>
+                            <div class="topic-content">
+                                <div class="topic-title">硬件实现与优化</div>
+                                <div class="topic-description">探讨波形设计在实际硬件平台上的实现挑战，包括功率放大器非线性、相位噪声补偿和数字预失真等技术。</div>
+                            </div>
+                        </li>
+                        
+                        <li>
+                            <div class="topic-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="topic-content">
+                                <div class="topic-title">6G及未来无线系统</div>
+                                <div class="topic-description">面向6G及未来无线通信系统的波形设计需求，研究太赫兹通信、智能反射表面和全息无线电等新兴技术中的波形创新。</div>
                             </div>
                         </li>
                     </ul>
@@ -792,29 +857,29 @@
                 <div class="speaker-card">
                     <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="张明教授" class="speaker-img">
                     <h3>张明 教授</h3>
-                    <p class="speaker-title">清华大学计算机科学与技术系</p>
-                    <p>人工智能与机器学习专家，IEEE Fellow，研究方向包括深度学习理论与应用。</p>
+                    <p class="speaker-title">清华大学通信工程系</p>
+                    <p>无线通信与信号处理专家，IEEE Fellow，在波形设计和MIMO系统方面有深入研究成果。</p>
                 </div>
                 
                 <div class="speaker-card">
                     <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="李娜博士" class="speaker-img">
                     <h3>李娜 博士</h3>
-                    <p class="speaker-title">Google AI 首席科学家</p>
-                    <p>自然语言处理领域的先驱者，领导多个大规模语言模型的开发项目。</p>
+                    <p class="speaker-title">华为无线研究部 首席科学家</p>
+                    <p>5G/6G波形设计专家，领导多个国际标准化项目，在新型多载波技术方面有重要贡献。</p>
                 </div>
                 
                 <div class="speaker-card">
-                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Dr. John Smith" class="speaker-img">
-                    <h3>Dr. John Smith</h3>
-                    <p class="speaker-title">MIT CSAIL 主任</p>
-                    <p>量子计算与网络安全专家，多项突破性量子算法的主要贡献者。</p>
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Dr. Robert Chen" class="speaker-img">
+                    <h3>Dr. Robert Chen</h3>
+                    <p class="speaker-title">MIT电子工程与计算机科学系</p>
+                    <p>信息论与通信理论专家，在波形设计的信息论基础方面有开创性研究成果。</p>
                 </div>
                 
                 <div class="speaker-card">
                     <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=761&q=80" alt="王芳教授" class="speaker-img">
                     <h3>王芳 教授</h3>
-                    <p class="speaker-title">上海交通大学数据科学研究院</p>
-                    <p>大数据分析与可视化专家，在数据挖掘和商业智能领域有丰富的研究经验。</p>
+                    <p class="speaker-title">上海交通大学电子工程系</p>
+                    <p>雷达信号处理专家，在感知波形设计和联合通信感知系统方面有丰富的研究经验。</p>
                 </div>
             </div>
         </section>
@@ -827,65 +892,80 @@
             
             <div class="schedule-container">
                 <div class="schedule-item">
-                    <div class="schedule-time">11月15日 09:00-10:30</div>
+                    <div class="schedule-time">08:30-09:00</div>
                     <div class="schedule-content">
-                        <h3>开幕式 & 主题演讲</h3>
-                        <p>开幕式致辞：ISIT Workshop 2024的目标与展望</p>
-                        <p>主题演讲：人工智能的未来发展趋势 - 张明教授</p>
+                        <h3>注册与欢迎</h3>
+                        <p>参会者注册，领取会议材料</p>
                     </div>
                 </div>
                 
                 <div class="schedule-item">
-                    <div class="schedule-time">11月15日 11:00-12:30</div>
+                    <div class="schedule-time">09:00-09:30</div>
                     <div class="schedule-content">
-                        <h3>并行分会场 A：深度学习前沿</h3>
-                        <p>新型神经网络架构探索</p>
-                        <p>自监督学习的最新进展</p>
+                        <h3>开幕式</h3>
+                        <p>欢迎致辞：ISIT Workshop 2026的目标与展望</p>
                     </div>
                 </div>
                 
                 <div class="schedule-item">
-                    <div class="schedule-time">11月15日 14:00-15:30</div>
+                    <div class="schedule-time">09:30-10:30</div>
                     <div class="schedule-content">
-                        <h3>并行分会场 B：数据安全与隐私</h3>
-                        <p>差分隐私在数据共享中的应用</p>
-                        <p>联邦学习与数据安全</p>
+                        <h3>主题演讲：6G波形设计的挑战与机遇</h3>
+                        <p>主讲人：张明 教授</p>
+                        <p>探讨6G及未来无线通信系统中波形设计的关键问题</p>
                     </div>
                 </div>
                 
                 <div class="schedule-item">
-                    <div class="schedule-time">11月16日 09:00-10:30</div>
+                    <div class="schedule-time">10:30-11:00</div>
                     <div class="schedule-content">
-                        <h3>主题演讲：量子计算的实用化路径</h3>
-                        <p>主讲人：Dr. John Smith</p>
-                        <p>探讨量子计算从理论到实践的挑战与机遇</p>
+                        <h3>茶歇与交流</h3>
                     </div>
                 </div>
                 
                 <div class="schedule-item">
-                    <div class="schedule-time">11月16日 13:30-17:00</div>
+                    <div class="schedule-time">11:00-12:30</div>
                     <div class="schedule-content">
-                        <h3>实践工作坊：大语言模型应用开发</h3>
-                        <p>指导专家：李娜博士团队</p>
-                        <p>动手实践：使用开源大语言模型构建应用程序</p>
+                        <h3>技术分会：通信波形设计</h3>
+                        <p>新型多载波技术、频谱效率优化、低功耗波形设计</p>
                     </div>
                 </div>
                 
                 <div class="schedule-item">
-                    <div class="schedule-time">11月17日 10:00-12:00</div>
+                    <div class="schedule-time">12:30-14:00</div>
                     <div class="schedule-content">
-                        <h3>圆桌讨论：数字化转型的挑战与机遇</h3>
-                        <p>行业领袖分享数字化转型经验</p>
-                        <p>探讨企业如何利用新兴技术实现创新</p>
+                        <h3>午餐</h3>
                     </div>
                 </div>
                 
                 <div class="schedule-item">
-                    <div class="schedule-time">11月17日 14:00-16:00</div>
+                    <div class="schedule-time">14:00-15:30</div>
                     <div class="schedule-content">
-                        <h3>闭幕式 & 最佳论文颁奖</h3>
-                        <p>研讨会总结与ISIT Workshop 2025预告</p>
-                        <p>颁发最佳论文奖和青年研究者奖</p>
+                        <h3>技术分会：感知与集成系统波形设计</h3>
+                        <p>雷达波形设计、联合通信感知系统、硬件实现挑战</p>
+                    </div>
+                </div>
+                
+                <div class="schedule-item">
+                    <div class="schedule-time">15:30-16:00</div>
+                    <div class="schedule-content">
+                        <h3>茶歇与海报展示</h3>
+                    </div>
+                </div>
+                
+                <div class="schedule-item">
+                    <div class="schedule-time">16:00-17:30</div>
+                    <div class="schedule-content">
+                        <h3>圆桌讨论：波形设计的未来方向</h3>
+                        <p>行业专家讨论波形设计的技术趋势、标准化和应用前景</p>
+                    </div>
+                </div>
+                
+                <div class="schedule-item">
+                    <div class="schedule-time">17:30-18:00</div>
+                    <div class="schedule-content">
+                        <h3>闭幕式与总结</h3>
+                        <p>研讨会总结与致谢</p>
                     </div>
                 </div>
             </div>
@@ -903,8 +983,17 @@
                         <i class="fas fa-paper-plane"></i>
                     </div>
                     <div class="date-title">论文提交截止</div>
-                    <div class="date">2024年9月30日</div>
-                    <div class="date-description">提交您的研究论文或技术报告，展示您在信息科学与技术领域的最新成果。</div>
+                    <div class="date">2026年3月15日</div>
+                    <div class="date-description">提交您的研究论文或技术报告，展示您在波形设计领域的最新成果。</div>
+                </div>
+                
+                <div class="date-card">
+                    <div class="date-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <div class="date-title">录用通知</div>
+                    <div class="date">2026年4月30日</div>
+                    <div class="date-description">论文评审结果通知，包含修改建议和最终提交要求。</div>
                 </div>
                 
                 <div class="date-card">
@@ -912,17 +1001,8 @@
                         <i class="fas fa-ticket-alt"></i>
                     </div>
                     <div class="date-title">早鸟注册截止</div>
-                    <div class="date">2024年10月15日</div>
+                    <div class="date">2026年5月15日</div>
                     <div class="date-description">提前注册可享受早鸟优惠价格，节省参会费用并确保席位。</div>
-                </div>
-                
-                <div class="date-card">
-                    <div class="date-icon">
-                        <i class="fas fa-hotel"></i>
-                    </div>
-                    <div class="date-title">酒店预订截止</div>
-                    <div class="date">2024年10月31日</div>
-                    <div class="date-description">通过官方渠道预订会议酒店可享受特别优惠价格。</div>
                 </div>
                 
                 <div class="date-card">
@@ -930,8 +1010,8 @@
                         <i class="fas fa-calendar-check"></i>
                     </div>
                     <div class="date-title">研讨会日期</div>
-                    <div class="date">2024年11月15-17日</div>
-                    <div class="date-description">为期三天的技术交流、主题演讲和实践工作坊，不容错过。</div>
+                    <div class="date">2026年7月3日</div>
+                    <div class="date-description">为期一天的深度技术交流、主题演讲和实践讨论，聚焦波形设计前沿。</div>
                 </div>
             </div>
         </section>
@@ -944,18 +1024,18 @@
             
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>ISIT Workshop 2024</h3>
-                    <p>信息科学与技术研讨会旨在推动领域内的学术交流与技术合作，为全球研究者提供高质量的交流平台。</p>
-                    <p>我们期待您的参与，共同探讨信息技术的前沿话题。</p>
+                    <h3>ISIT Workshop 2026</h3>
+                    <p>下一代波形设计研讨会旨在推动通信、感知与集成系统中波形设计技术的前沿研究，为全球研究者提供高质量的交流平台。</p>
+                    <p>我们期待您的参与，共同探讨波形设计技术的未来发展方向。</p>
                 </div>
                 
                 <div class="footer-section">
                     <h3>联系方式</h3>
                     <ul class="contact-info">
-                        <li><i class="fas fa-map-marker-alt"></i> 上海市浦东新区滨江大道2727号上海国际会议中心</li>
-                        <li><i class="fas fa-phone"></i> +86 21 6889 8888</li>
-                        <li><i class="fas fa-envelope"></i> info@isitworkshop2024.org</li>
-                        <li><i class="fas fa-globe"></i> www.isitworkshop2024.org</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 中国广州国际会议中心</li>
+                        <li><i class="fas fa-phone"></i> +86 20 8888 8888</li>
+                        <li><i class="fas fa-envelope"></i> workshop@isit2026.org</li>
+                        <li><i class="fas fa-globe"></i> www.isit2026.org/workshop</li>
                     </ul>
                     
                     <div class="social-links">
@@ -971,13 +1051,13 @@
                     <p>主席：张明 教授</p>
                     <p>副主席：李娜 博士</p>
                     <p>秘书长：王芳 教授</p>
-                    <p>程序委员会主席：Dr. John Smith</p>
+                    <p>程序委员会主席：Dr. Robert Chen</p>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2024 ISIT Workshop. 保留所有权利。</p>
-                <p>本网站内容仅供参考，最终安排以研讨会现场公告为准。</p>
+                <p>&copy; 2026 IEEE ISIT Workshop. 保留所有权利。</p>
+                <p>本研讨会是IEEE国际信息论研讨会(ISIT) 2026的附属活动。</p>
             </div>
         </section>
     </main>
@@ -1038,7 +1118,7 @@
         
         // 页面加载后显示欢迎消息
         window.addEventListener('load', () => {
-            console.log('ISIT Workshop 2024网站已加载完成。欢迎参加我们的研讨会！');
+            console.log('IEEE ISIT Workshop 2026网站已加载完成。欢迎参加我们的研讨会！');
         });
     </script>
 </body>
