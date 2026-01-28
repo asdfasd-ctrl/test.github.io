@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISIT Workshop 2024 | 信息科学与技术研讨会</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --gray: #7f8c8d;
+            --transition: all 0.3s ease;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+        
+        /* 导航栏 */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 0 20px;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            color: var(--secondary);
+            margin-right: 10px;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--secondary);
+        }
+        
+        nav a.active {
+            color: var(--secondary);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            left: 0;
+            bottom: 0;
+            transition: var(--transition);
+        }
+        
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+        
+        /* 主要区域 */
+        section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a2530 100%);
+            color: white;
+            text-align: center;
+            padding: 150px 20px 120px;
+            margin-top: 70px;
+            border-radius: 0 0 20px 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .hero .date-location {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 40px;
+            color: var(--light);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: var(--transition);
+            border: 2px solid var(--accent);
+        }
+        
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        /* 关于部分 */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* 主题与演讲者 */
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .topic-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            padding: 30px;
+        }
+        
+        .topic-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .topic-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .topic-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .speakers-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .speaker-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            text-align: center;
+            padding-bottom: 20px;
+        }
+        
+        .speaker-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .speaker-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        
+        .speaker-card h3 {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .speaker-title {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        /* 日程安排 */
+        .schedule-container {
+            max-width: 900px;
+            margin: 40px auto 0;
+        }
+        
+        .schedule-item {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+        
+        .schedule-item:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .schedule-time {
+            background-color: var(--secondary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            min-width: 150px;
+            text-align: center;
+            margin-right: 30px;
+        }
+        
+        .schedule-content h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        /* 注册部分 */
+        .register-container {
+            background-color: white;
+            border-radius: 15px;
+            padding: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            max-width: 800px;
+            margin: 40px auto 0;
+        }
+        
+        .register-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group.full-width {
+            grid-column: 1 / span 2;
+        }
+        
+        label {
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        input, select, textarea {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            grid-column: 1 / span 2;
+            margin-top: 10px;
+        }
+        
+        .submit-btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* 页脚 */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 60px 20px 30px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--light);
+        }
+        
+        .footer-section p {
+            opacity: 0.8;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .register-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-group.full-width {
+                grid-column: 1;
+            }
+            
+            .submit-btn {
+                grid-column: 1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            nav ul.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            nav li {
+                margin: 15px 0;
+            }
+            
+            .hero {
+                padding: 120px 20px 80px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .schedule-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .schedule-time {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.7rem;
+            }
+            
+            .register-container {
+                padding: 30px 20px;
+            }
+            
+            .topic-card, .speaker-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-microchip"></i>
+                ISIT<span>Workshop</span>
+            </div>
+            
+            <div class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#home" class="active">首页</a></li>
+                    <li><a href="#about">关于</a></li>
+                    <li><a href="#topics">主题</a></li>
+                    <li><a href="#speakers">演讲者</a></li>
+                    <li><a href="#schedule">日程</a></li>
+                    <li><a href="#register">注册</a></li>
+                    <li><a href="#contact">联系</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 主要内容 -->
+    <main>
+        <!-- 首页/横幅 -->
+        <section id="home" class="hero">
+            <h1>ISIT Workshop 2024</h1>
+            <p class="date-location">2024年11月15-17日 | 上海国际会议中心</p>
+            <p>加入全球信息科学与技术领域的领先专家，共同探讨人工智能、大数据、网络安全和量子计算等前沿技术的最新进展与应用。</p>
+            <a href="#register" class="cta-button">立即注册</a>
+        </section>
+
+        <!-- 关于研讨会 -->
+        <section id="about">
+            <div class="section-title">
+                <h2>关于ISIT Workshop</h2>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p>ISIT Workshop 2024是信息科学与技术领域一年一度的国际盛会，汇集了来自学术界和工业界的顶尖专家、研究人员和从业人员。</p>
+                    <p>本次研讨会旨在为参与者提供一个交流最新研究成果、分享实践经验、探讨未来趋势的平台。我们专注于前沿技术领域，包括人工智能、机器学习、大数据分析、网络安全、物联网和量子计算等。</p>
+                    <p>通过主题演讲、技术分会、实践工作坊和社交活动，与会者将有机会建立有价值的专业联系，获得灵感，并将新知识应用于自己的研究和项目中。</p>
+                    <p>我们期待与您在上海相见，共同塑造信息技术的未来！</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="ISIT Workshop会议场景">
+                </div>
+            </div>
+        </section>
+
+        <!-- 主题领域 -->
+        <section id="topics">
+            <div class="section-title">
+                <h2>主题领域</h2>
+            </div>
+            
+            <div class="topics-grid">
+                <div class="topic-card">
+                    <div class="topic-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>人工智能与机器学习</h3>
+                    <p>探索深度学习、自然语言处理、计算机视觉和强化学习等领域的最新进展，以及AI在各行业的创新应用。</p>
+                </div>
+                
+                <div class="topic-card">
+                    <div class="topic-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>大数据与分析</h3>
+                    <p>讨论大数据管理、数据挖掘、实时分析和可视化技术，以及数据驱动决策的最佳实践。</p>
+                </div>
+                
+                <div class="topic-card">
+                    <div class="topic-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>网络安全</h3>
+                    <p>关注网络安全威胁、隐私保护、区块链技术和加密算法的前沿发展，构建更安全的数字世界。</p>
+                </div>
+                
+                <div class="topic-card">
+                    <div class="topic-icon">
+                        <i class="fas fa-satellite"></i>
+                    </div>
+                    <h3>物联网与5G</h3>
+                    <p>研究物联网设备、5G通信、边缘计算和智能城市解决方案，实现万物互联的未来。</p>
+                </div>
+                
+                <div class="topic-card">
+                    <div class="topic-icon">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <h3>量子计算</h3>
+                    <p>探索量子计算的基本原理、量子算法和量子硬件，了解这一颠覆性技术的潜力和挑战。</p>
+                </div>
+                
+                <div class="topic-card">
+                    <div class="topic-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>数字化转型</h3>
+                    <p>分享企业数字化转型的成功案例，探讨如何利用信息技术优化业务流程和创造新的商业模式。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 演讲者 -->
+        <section id="speakers">
+            <div class="section-title">
+                <h2>特邀演讲者</h2>
+            </div>
+            
+            <div class="speakers-container">
+                <div class="speaker-card">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="张明教授" class="speaker-img">
+                    <h3>张明 教授</h3>
+                    <p class="speaker-title">清华大学计算机科学与技术系</p>
+                    <p>人工智能与机器学习专家，IEEE Fellow，研究方向包括深度学习理论与应用。</p>
+                </div>
+                
+                <div class="speaker-card">
+                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="李娜博士" class="speaker-img">
+                    <h3>李娜 博士</h3>
+                    <p class="speaker-title">Google AI 首席科学家</p>
+                    <p>自然语言处理领域的先驱者，领导多个大规模语言模型的开发项目。</p>
+                </div>
+                
+                <div class="speaker-card">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Dr. John Smith" class="speaker-img">
+                    <h3>Dr. John Smith</h3>
+                    <p class="speaker-title">MIT CSAIL 主任</p>
+                    <p>量子计算与网络安全专家，多项突破性量子算法的主要贡献者。</p>
+                </div>
+                
+                <div class="speaker-card">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=761&q=80" alt="王芳教授" class="speaker-img">
+                    <h3>王芳 教授</h3>
+                    <p class="speaker-title">上海交通大学数据科学研究院</p>
+                    <p>大数据分析与可视化专家，在数据挖掘和商业智能领域有丰富的研究经验。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 日程安排 -->
+        <section id="schedule">
+            <div class="section-title">
+                <h2>研讨会日程</h2>
+            </div>
+            
+            <div class="schedule-container">
+                <div class="schedule-item">
+                    <div class="schedule-time">11月15日 09:00-10:30</div>
+                    <div class="schedule-content">
+                        <h3>开幕式 & 主题演讲</h3>
+                        <p>开幕式致辞：ISIT Workshop 2024的目标与展望</p>
+                        <p>主题演讲：人工智能的未来发展趋势 - 张明教授</p>
+                    </div>
+                </div>
+                
+                <div class="schedule-item">
+                    <div class="schedule-time">11月15日 11:00-12:30</div>
+                    <div class="schedule-content">
+                        <h3>并行分会场 A：深度学习前沿</h3>
+                        <p>新型神经网络架构探索</p>
+                        <p>自监督学习的最新进展</p>
+                    </div>
+                </div>
+                
+                <div class="schedule-item">
+                    <div class="schedule-time">11月15日 14:00-15:30</div>
+                    <div class="schedule-content">
+                        <h3>并行分会场 B：数据安全与隐私</h3>
+                        <p>差分隐私在数据共享中的应用</p>
+                        <p>联邦学习与数据安全</p>
+                    </div>
+                </div>
+                
+                <div class="schedule-item">
+                    <div class="schedule-time">11月16日 09:00-10:30</div>
+                    <div class="schedule-content">
+                        <h3>主题演讲：量子计算的实用化路径</h3>
+                        <p>主讲人：Dr. John Smith</p>
+                        <p>探讨量子计算从理论到实践的挑战与机遇</p>
+                    </div>
+                </div>
+                
+                <div class="schedule-item">
+                    <div class="schedule-time">11月16日 13:30-17:00</div>
+                    <div class="schedule-content">
+                        <h3>实践工作坊：大语言模型应用开发</h3>
+                        <p>指导专家：李娜博士团队</p>
+                        <p>动手实践：使用开源大语言模型构建应用程序</p>
+                    </div>
+                </div>
+                
+                <div class="schedule-item">
+                    <div class="schedule-time">11月17日 10:00-12:00</div>
+                    <div class="schedule-content">
+                        <h3>圆桌讨论：数字化转型的挑战与机遇</h3>
+                        <p>行业领袖分享数字化转型经验</p>
+                        <p>探讨企业如何利用新兴技术实现创新</p>
+                    </div>
+                </div>
+                
+                <div class="schedule-item">
+                    <div class="schedule-time">11月17日 14:00-16:00</div>
+                    <div class="schedule-content">
+                        <h3>闭幕式 & 最佳论文颁奖</h3>
+                        <p>研讨会总结与ISIT Workshop 2025预告</p>
+                        <p>颁发最佳论文奖和青年研究者奖</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 注册表单 -->
+        <section id="register">
+            <div class="section-title">
+                <h2>注册参会</h2>
+            </div>
+            
+            <div class="register-container">
+                <p>请填写以下表格完成ISIT Workshop 2024的注册。早鸟优惠截止日期为2024年10月15日。</p>
+                
+                <form id="registrationForm" class="register-form">
+                    <div class="form-group">
+                        <label for="fullName">姓名 *</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">邮箱 *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="affiliation">机构/公司 *</label>
+                        <input type="text" id="affiliation" name="affiliation" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="position">职位</label>
+                        <input type="text" id="position" name="position">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="country">国家/地区 *</label>
+                        <select id="country" name="country" required>
+                            <option value="">请选择</option>
+                            <option value="china">中国</option>
+                            <option value="usa">美国</option>
+                            <option value="uk">英国</option>
+                            <option value="germany">德国</option>
+                            <option value="japan">日本</option>
+                            <option value="other">其他</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="registrationType">注册类型 *</label>
+                        <select id="registrationType" name="registrationType" required>
+                            <option value="">请选择</option>
+                            <option value="full">全程参会 (早鸟价: ¥2800)</option>
+                            <option value="student">学生票 (早鸟价: ¥1500)</option>
+                            <option value="single">单日票 (¥1200/天)</option>
+                            <option value="virtual">虚拟参会 (¥800)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="dietary">饮食偏好</label>
+                        <select id="dietary" name="dietary">
+                            <option value="none">无特殊要求</option>
+                            <option value="vegetarian">素食</option>
+                            <option value="vegan">纯素</option>
+                            <option value="halal">清真</option>
+                            <option value="gluten-free">无麸质</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="comments">备注或特殊要求</label>
+                        <textarea id="comments" name="comments" placeholder="如有任何特殊需求或问题，请在此注明..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">提交注册申请</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- 联系信息 -->
+        <section id="contact">
+            <div class="section-title">
+                <h2>联系我们</h2>
+            </div>
+            
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ISIT Workshop 2024</h3>
+                    <p>信息科学与技术研讨会旨在推动领域内的学术交流与技术合作，为全球研究者提供高质量的交流平台。</p>
+                    <p>我们期待您的参与，共同探讨信息技术的前沿话题。</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>联系方式</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 上海市浦东新区滨江大道2727号上海国际会议中心</li>
+                        <li><i class="fas fa-phone"></i> +86 21 6889 8888</li>
+                        <li><i class="fas fa-envelope"></i> info@isitworkshop2024.org</li>
+                        <li><i class="fas fa-globe"></i> www.isitworkshop2024.org</li>
+                    </ul>
+                    
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-weibo"></i></a>
+                        <a href="#"><i class="fab fa-weixin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>重要日期</h3>
+                    <p><strong>早鸟注册截止：</strong>2024年10月15日</p>
+                    <p><strong>论文提交截止：</strong>2024年9月30日</p>
+                    <p><strong>研讨会日期：</strong>2024年11月15-17日</p>
+                    <p><strong>酒店预订截止：</strong>2024年10月31日</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="copyright">
+            <p>&copy; 2024 ISIT Workshop. 保留所有权利。</p>
+            <p>本网站内容仅供参考，最终安排以研讨会现场公告为准。</p>
+        </div>
+    </footer>
+
+    <script>
+        // 移动端导航菜单切换
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileToggle.querySelector('i').classList.toggle('fa-bars');
+            mobileToggle.querySelector('i').classList.toggle('fa-times');
+        });
+        
+        // 导航链接点击处理
+        const navLinks = document.querySelectorAll('nav a');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                // 移除所有active类
+                navLinks.forEach(item => item.classList.remove('active'));
+                
+                // 添加当前active类
+                link.classList.add('active');
+                
+                // 如果是移动端，点击后关闭菜单
+                if (window.innerWidth <= 768) {
+                    navMenu.classList.remove('active');
+                    mobileToggle.querySelector('i').classList.remove('fa-times');
+                    mobileToggle.querySelector('i').classList.add('fa-bars');
+                }
+            });
+        });
+        
+        // 表单提交处理
+        const registrationForm = document.getElementById('registrationForm');
+        
+        registrationForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // 在实际应用中，这里应该将数据发送到服务器
+            // 这里我们只显示一个简单的成功消息
+            alert('感谢您的注册！我们已收到您的注册信息，将在24小时内通过电子邮件发送确认信。');
+            
+            // 重置表单
+            registrationForm.reset();
+        });
+        
+        // 滚动时更新导航栏活动状态
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLi = document.querySelectorAll('nav a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLi.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // 页面加载后显示欢迎消息
+        window.addEventListener('load', () => {
+            console.log('ISIT Workshop 2024网站已加载完成。欢迎参加我们的研讨会！');
+        });
+    </script>
+</body>
+</html>
